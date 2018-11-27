@@ -2,7 +2,14 @@ const WORDS = ['喵','呜', '嗷', '嘤', '咪']
 $hide('url-a')
 $click('decode-btn', () => {decodeBtn()})
 $click('encode-btn', () => {encodeBtn()})
-
+if($q('m')) {
+    $v('toDecode-area', $q('m'))
+    if(isBaiduDisk(decode($q('m'))))
+        $notify('网盘链接已识别，请点击解码')
+    else
+        decodeBtn()
+}
+    
 
 function int2Word(i) {
     return WORDS[i]
